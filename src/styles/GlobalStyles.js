@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   ${reset}
 
   body {
+    font-family: 'AppleSDGothicNeo-Regular';
     position: relative;
   }
 `;
