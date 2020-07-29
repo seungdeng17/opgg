@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import SearchForm from "./SearchForm";
 
-const HeaderWrap = styled.div`
+const HeaderOutter = styled.div`
   position: relative;
   width: 100%;
   height: 97px;
@@ -12,9 +12,9 @@ const HeaderWrap = styled.div`
 
 const Header = () => {
   return (
-    <HeaderWrap>
+    <HeaderOutter>
       <SearchForm />
-    </HeaderWrap>
+    </HeaderOutter>
   );
 };
 

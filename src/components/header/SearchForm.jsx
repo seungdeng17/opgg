@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { getSummoner } from "@modules/summoner";
 
 const SearchFormWrap = styled.div`
   position: absolute;
@@ -23,7 +25,7 @@ const Form = styled.form`
 
 const FormInput = styled.input`
   font-family: "AppleSDGothicNeo-Regular";
-  width: 200px;
+  width: 220px;
   height: 100%;
   border: none;
   outline: none;
@@ -47,14 +49,15 @@ const FormSubmitBtn = styled.button`
 `;
 
 const SearchForm = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = ({ searchId }) => console.log(searchId);
+  const onSubmit = ({ summonerName }) => dispatch(getSummoner(summonerName));
 
   return (
     <SearchFormWrap>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput type="text" placeholder="소환사명,챔피언..." name="searchId" ref={register} />
+        <FormInput type="text" placeholder="소환사명,챔피언..." name="summonerName" ref={register} />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
     </SearchFormWrap>

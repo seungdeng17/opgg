@@ -7,7 +7,8 @@
       "@styles/*": ["./src/styles/*"],
       "@modules/*": ["./src/store/modules/*"],
       "@constants/*": ["./src/constants/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   }
 }
