@@ -8,7 +8,8 @@
       "@modules/*": ["./src/store/modules/*"],
       "@constants/*": ["./src/constants/*"],
       "@utils/*": ["./src/utils/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   }
 }
