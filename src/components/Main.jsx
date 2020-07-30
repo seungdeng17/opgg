@@ -6,6 +6,7 @@ import NoResult from "@components/etc/NoResult";
 import Header from "@components/header/Header";
 import Profile from "@components/summoner/profile/Profile";
 import Rank from "@components/summoner/rank/Rank";
+import WinRate from "@components/summoner/winRate/WinRate";
 
 const MainWrap = styled.div`
   width: 1440px;
@@ -42,6 +43,7 @@ const Main = () => {
           <MainContentsInner>
             <MainLeftContents>
               <Rank {...{ summonerData }} />
+              <WinRate {...{ summonerData }} />
             </MainLeftContents>
             <MainRightContents></MainRightContents>
           </MainContentsInner>
