@@ -35,3 +35,8 @@ export const getKdaScoreColor = (kda) => {
     if (kda >= 3) return '#2daf7f';
     return null;
 }
+
+export const getWinRateColor = (winRate) => {
+    if (winRate >= 60) return '#c6443e';
+    return null;
+}

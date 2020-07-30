@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { calculateRate, getKdaScoreColor } from "@utils/util";
+import { calculateRate, getKdaScoreColor, getWinRateColor } from "@utils/util";
 
 const ChampWinRateItem = styled.li`
   padding: 4px 15px;
@@ -32,7 +32,7 @@ const InfoText = styled.div`
   text-align: ${({ align }) => align};
 
   .top {
-    color: ${({ kdaColor }) => (kdaColor ? kdaColor : "#5e5e5e")};
+    color: ${({ color }) => (color ? color : "#5e5e5e")};
     font-size: 13px;
     font-weight: 600;
     cursor: default;
@@ -60,8 +60,7 @@ const ChampWinRate = ({ champions }) => {
 
     const { csRate, killRate, assistRate, deathRate, kdaScore, winRate } = calculateRate(data);
     const kdaColor = getKdaScoreColor(+kdaScore);
-
-    console.log(kdaColor);
+    const winRateColor = getWinRateColor(+winRate);
 
     return (
       <ChampWinRateItem key={key}>
@@ -74,13 +73,13 @@ const ChampWinRate = ({ champions }) => {
             CS {cs} ({csRate})
           </div>
         </InfoText>
-        <InfoText width={88} align={"center"} kdaColor={kdaColor}>
+        <InfoText width={88} align={"center"} color={kdaColor}>
           <div className="top">{kdaScore}:1 평점</div>
           <div>
             {killRate} / {deathRate} / {assistRate}
           </div>
         </InfoText>
-        <InfoText width={40} align={"center"}>
+        <InfoText width={40} align={"center"} color={winRateColor}>
           <div className="top">{winRate}%</div>
           <div>{games}게임</div>
         </InfoText>
