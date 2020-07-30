@@ -12,7 +12,7 @@ const MainWrap = styled.div`
   margin: 0 auto;
 `;
 
-const DefaultMessage = styled.div`
+const NoResult = styled.div`
   height: calc(100vh - 97px);
   background-color: #eaeaea;
   display: flex;
@@ -32,17 +32,20 @@ const DefaultMessage = styled.div`
 const Main = () => {
   const { summonerData, error } = useSelector(({ summoner }) => summoner);
 
+  const mainContent =
+    summonerData && !error ? (
+      <Profile {...{ summonerData }} />
+    ) : (
+      <NoResult>
+        <img src={dinger} alt="dinger-img" />
+        <p>소환사명을 입력해주세요.</p>
+      </NoResult>
+    );
+
   return (
     <MainWrap>
       <Header />
-      {summonerData && !error ? (
-        <Profile {...{ summonerData }} />
-      ) : (
-        <DefaultMessage>
-          <img src={dinger} alt="test" />
-          <p>소환사명을 입력해주세요.</p>
-        </DefaultMessage>
-      )}
+      {mainContent}
     </MainWrap>
   );
 };
