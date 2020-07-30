@@ -12,7 +12,6 @@ const NoResultWrap = styled.div`
   flex-direction: column;
 
   p {
-    font-family: "AppleSDGothicNeo-Regular";
     margin-top: 20px;
     font-size: 35px;
     font-weight: 600;
