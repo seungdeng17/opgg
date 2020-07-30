@@ -36,7 +36,7 @@ const ProfileInfo = ({ name, ladderRank }) => {
     <InfoWrap>
       <Name>{name}</Name>
       <LadderRank>
-        레더 랭킹 <span>{commaRank}</span>위(상위 {rankPercentOfTop}%)
+        레더 랭킹 <span>{commaRank}</span>위 (상위 {rankPercentOfTop}%)
       </LadderRank>
     </InfoWrap>
   );
