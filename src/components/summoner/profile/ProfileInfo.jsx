@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { numberComma } from "@utils/util";
+import { getNumberComma } from "@utils/util";
 
 const InfoWrap = styled.div`
   position: relative;
@@ -29,7 +29,7 @@ const LadderRank = styled.p`
 
 const ProfileInfo = ({ name, ladderRank }) => {
   const { rank, rankPercentOfTop } = ladderRank;
-  const commaRank = numberComma(rank);
+  const commaRank = getNumberComma(rank);
 
   return (
     <InfoWrap>

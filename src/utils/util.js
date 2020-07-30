@@ -1,8 +1,8 @@
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
 
-export const numberComma = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+export const getNumberComma = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-export const tierConverter = (tier, division) => {
+export const getTierName = (tier, division) => {
     if (tier === 'Challenger' || tier === 'Grandmaster' || tier === 'Master') return tier;
 
     const divisions = {
@@ -14,7 +14,7 @@ export const tierConverter = (tier, division) => {
     return `${tier} ${divisions[division]}`;
 };
 
-export const rateCalculator = (data) => {
+export const calculateRate = (data) => {
     const { cs, kills, assists, deaths, wins, games } = data;
 
     const csRate = (cs / games).toFixed(1);
@@ -29,7 +29,7 @@ export const rateCalculator = (data) => {
     }
 }
 
-export const kdaColorPicker = (kda) => {
+export const getKdaScoreColor = (kda) => {
     if (kda >= 5) return '#e19205';
     if (kda >= 4) return '#1f8ecd';
     if (kda >= 3) return '#2daf7f';

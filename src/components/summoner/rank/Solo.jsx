@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { tierConverter } from "@utils/util";
+import { getTierName } from "@utils/util";
 
 const SoloOutter = styled.div`
   width: 300px;
@@ -52,7 +52,7 @@ const Solo = ({ soloRankData }) => {
   const { division, imageUrl, lp, tier } = soloRankData.tierRank;
 
   const totalGames = wins + losses;
-  const tierInfo = tierConverter(tier, division);
+  const tierInfo = getTierName(tier, division);
   const winRate = Math.round((wins / totalGames) * 100);
 
   return (

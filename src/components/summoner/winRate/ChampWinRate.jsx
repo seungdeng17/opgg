@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { rateCalculator, kdaColorPicker } from "@utils/util";
+import { calculateRate, getKdaScoreColor } from "@utils/util";
 
 const ChampWinRateItem = styled.li`
   padding: 4px 15px;
@@ -58,8 +58,8 @@ const ChampWinRate = ({ champions }) => {
     if (champList.includes(key)) return null;
     champList.push(key);
 
-    const { csRate, killRate, assistRate, deathRate, kdaScore, winRate } = rateCalculator(data);
-    const kdaColor = kdaColorPicker(+kdaScore);
+    const { csRate, killRate, assistRate, deathRate, kdaScore, winRate } = calculateRate(data);
+    const kdaColor = getKdaScoreColor(+kdaScore);
 
     console.log(kdaColor);
 
