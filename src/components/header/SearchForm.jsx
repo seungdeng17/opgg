@@ -52,7 +52,10 @@ const SearchForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = ({ summonerName }) => dispatch(getSummoner(summonerName));
+  const onSubmit = ({ summonerName }) => {
+    if (!summonerName) return;
+    dispatch(getSummoner(summonerName));
+  };
 
   return (
     <SearchFormWrap>

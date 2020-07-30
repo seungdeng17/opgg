@@ -8,23 +8,22 @@ const InfoWrap = styled.div`
 `;
 
 const Name = styled.h2`
-  font-family: "AppleSDGothicNeo-Bold";
   height: 24px;
   font-size: 20px;
+  font-weight: 600;
   letter-spacing: -0.77px;
   color: #242929;
   margin-bottom: 4px;
 `;
 
 const LadderRank = styled.p`
-  font-family: "AppleSDGothicNeo-Regular";
   height: 13px;
   font-size: 11px;
   letter-spacing: -0.42px;
   color: #657070;
 
   span {
-    font-family: "Helvetica-Bold";
+    font-weight: 600;
   }
 `;
 
@@ -36,7 +35,7 @@ const ProfileInfo = ({ name, ladderRank }) => {
     <InfoWrap>
       <Name>{name}</Name>
       <LadderRank>
-        레더 랭킹 <span>{commaRank}</span>위(상위 {rankPercentOfTop}%)
+        레더 랭킹 <span>{commaRank}</span>위 (상위 {rankPercentOfTop}%)
       </LadderRank>
     </InfoWrap>
   );

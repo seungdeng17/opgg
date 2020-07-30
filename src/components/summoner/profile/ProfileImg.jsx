@@ -38,7 +38,6 @@ const LevelBox = styled.div`
   line-height: 24px;
   font-size: 14px;
   color: #eabd56;
-  font-family: "Helvetica";
   background: url(${levelBox});
   z-index: 2;
 `;

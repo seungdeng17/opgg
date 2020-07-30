@@ -10,7 +10,6 @@ const PreviousTiersWrap = styled.div`
 
 const PreviousTier = styled.div`
   padding: 4px 5px 3px 5px;
-  font-family: "Helvetica";
   font-size: 11px;
   letter-spacing: -0.42px;
   margin-right: 7px;
@@ -20,7 +19,7 @@ const PreviousTier = styled.div`
   border-radius: 2px;
 
   span {
-    font-family: "Helvetica-Bold";
+    font-weight: 600;
   }
 
   :last-child {
@@ -31,7 +30,7 @@ const PreviousTier = styled.div`
 const PreviousTiers = ({ previousTiers }) => {
   const previoutTiersList = previousTiers.reverse().map(({ season, shortString, tier }) => (
     <PreviousTier key={season} data-tier={shortString}>
-      S<span>{season}</span> {tier}
+      <span>S{season}</span> {tier}
     </PreviousTier>
   ));
 

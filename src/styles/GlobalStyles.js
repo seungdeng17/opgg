@@ -5,7 +5,12 @@ const GlobalStyles = createGlobalStyle`
   ${reset}
 
   body {
+    font-family: 'Noto Sans KR', sans-serif;
     position: relative;
+  }
+
+  button, input {
+    font-family: 'Noto Sans KR', sans-serif;
   }
 `;
 
