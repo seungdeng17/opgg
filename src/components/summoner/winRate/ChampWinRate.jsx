@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { calculateRate, getKdaScoreColor, getWinRateColor } from "@utils/util";
 
@@ -37,15 +37,10 @@ const InfoText = styled.div`
     font-weight: 600;
     cursor: default;
   }
-
   div {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-  }
-
-  :last-child {
-    margin-right: 0;
   }
 `;
 
@@ -54,16 +49,16 @@ const ChampWinRate = ({ champions }) => {
 
   const champList = [];
   const champWinRateList = championsSort.map((data) => {
-    const { cs, games, key, name, imageUrl } = data;
-    if (champList.includes(key)) return null;
-    champList.push(key);
+    const { cs, games, id, name, imageUrl } = data;
+    if (champList.includes(id)) return null;
+    champList.push(id);
 
     const { csRate, killRate, assistRate, deathRate, kdaScore, winRate } = calculateRate(data);
     const kdaColor = getKdaScoreColor(+kdaScore);
     const winRateColor = getWinRateColor(+winRate);
 
     return (
-      <ChampWinRateItem key={key}>
+      <ChampWinRateItem key={id}>
         <ChampImg src={imageUrl} alt="champ-img" />
         <InfoText width={68} align={"left"}>
           <div className="top" title={name}>
@@ -90,4 +85,4 @@ const ChampWinRate = ({ champions }) => {
   return <ul>{champWinRateList}</ul>;
 };
 
-export default ChampWinRate;
+export default memo(ChampWinRate);
