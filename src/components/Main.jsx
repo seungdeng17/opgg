@@ -12,11 +12,14 @@ const MainWrap = styled.div`
   margin: 0 auto;
 `;
 
-const MainContentsWrap = styled.div`
+const MainContentsOutter = styled.div`
+  background-color: #eaeaea;
+`;
+
+const MainContentsInner = styled.div`
+  padding-top: 10px;
+  padding-left: 179px;
   display: flex;
-  position: relative;
-  top: 10px;
-  left: 179px;
 `;
 
 const MainLeftContents = styled.div`
@@ -35,12 +38,14 @@ const Main = () => {
     summonerData && !error ? (
       <>
         <Profile {...{ summonerData }} />
-        <MainContentsWrap>
-          <MainLeftContents>
-            <Rank {...{ summonerData }} />
-          </MainLeftContents>
-          <MainRightContents></MainRightContents>
-        </MainContentsWrap>
+        <MainContentsOutter>
+          <MainContentsInner>
+            <MainLeftContents>
+              <Rank {...{ summonerData }} />
+            </MainLeftContents>
+            <MainRightContents></MainRightContents>
+          </MainContentsInner>
+        </MainContentsOutter>
       </>
     ) : (
       <NoResult />
