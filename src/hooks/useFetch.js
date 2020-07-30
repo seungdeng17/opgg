@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-function useFetch({ callback, url, dependency, option = { method: 'GET' } }) {
+function useFetch({ callback, url, dependency }) {
     const [loading, setLoading] = useState(true);
     const fetchInitialData = async () => {
-        const response = await fetch(url, option);
+        const response = await fetch(url);
         const data = await response.json();
         callback(data);
         setLoading(false);

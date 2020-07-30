@@ -18,8 +18,7 @@ const MainContentsOutter = styled.div`
 `;
 
 const MainContentsInner = styled.div`
-  padding-top: 10px;
-  padding-left: 179px;
+  padding: 10px 0 40px 179px;
   display: flex;
 `;
 
