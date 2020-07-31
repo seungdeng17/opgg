@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getMatchData, changeFilterType, filterType } from "@modules/match";
+import { getMatchData } from "@modules/match";
+import { FILTER_TYPE } from "@constants/constant";
 import Tabs from "@components/common/Tabs";
 
-import MatchFilter from "./MatchFilter";
+import MatchInfo from "./MatchInfo";
 
 const TabButtonWrap = styled.ul`
   width: 690px;
@@ -34,11 +35,12 @@ const TabButton = styled.li`
 `;
 
 const Match = ({ summonerData }) => {
+  const { ALL, SOLO_RANK, TEAM_RANK } = FILTER_TYPE;
+
   const dispatch = useDispatch();
+  const [filterType, setFilterType] = useState(ALL);
 
-  const onClickCallback = (type) => dispatch(changeFilterType(type));
-
-  const { all, soloRank, teamRank } = filterType;
+  const tabClickCallback = (type) => setFilterType(type);
 
   useEffect(() => {
     dispatch(getMatchData(summonerData.name));
@@ -46,9 +48,9 @@ const Match = ({ summonerData }) => {
 
   return (
     <Tabs {...{ TabButtonWrap, TabButton }}>
-      <MatchFilter title="전체" callback={() => onClickCallback(all)} type={all} />
-      <MatchFilter title="솔로랭크" callback={() => onClickCallback(soloRank)} type={soloRank} />
-      <MatchFilter title="자유랭크" callback={() => onClickCallback(teamRank)} type={teamRank} />
+      <MatchInfo title="전체" callback={() => tabClickCallback(ALL)} type={ALL} />
+      <MatchInfo title="솔로랭크" callback={() => tabClickCallback(SOLO_RANK)} type={SOLO_RANK} />
+      <MatchInfo title="자유랭크" callback={() => tabClickCallback(TEAM_RANK)} type={TEAM_RANK} />
     </Tabs>
   );
 };
