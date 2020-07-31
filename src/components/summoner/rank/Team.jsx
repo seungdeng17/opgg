@@ -9,11 +9,13 @@ const TeamOutter = styled.div`
   border-radius: 2px;
   background-color: #f2f2f2;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 `;
 
 const TeamInner = styled.div`
-  padding: 16px 0;
   display: flex;
+  align-items: center;
 `;
 
 const RankImg = styled.img`
@@ -28,6 +30,7 @@ const RankText = styled.div`
   justify-content: space-around;
   font-size: 11px;
   color: #879292;
+  height: 68px;
 
   .rank-type {
     font-size: 11px;

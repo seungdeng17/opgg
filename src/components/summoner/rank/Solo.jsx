@@ -10,11 +10,13 @@ const SoloOutter = styled.div`
   background-color: #f2f2f2;
   box-sizing: border-box;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 `;
 
 const SoloInner = styled.div`
-  padding: 10px 0;
   display: flex;
+  align-items: center;
 `;
 
 const RankImg = styled.img`
@@ -29,6 +31,7 @@ const RankText = styled.div`
   justify-content: space-around;
   font-size: 12px;
   color: #879292;
+  height: 100px;
 
   .rank-type {
     font-size: 11px;
