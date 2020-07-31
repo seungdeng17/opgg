@@ -13,6 +13,8 @@ const MatchSummaryWrap = styled.div`
   border-top: none;
   margin-bottom: 16px;
   display: flex;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
   box-sizing: border-box;
 `;
 
