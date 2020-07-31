@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-
 import Loading from "@components/common/Loading";
+
+import MatchSummary from "./matchSummary/MatchSummary";
+import MatchList from "./matchList/MatchList";
 
 const LoadingWrap = styled.div`
   width: 690px;
@@ -22,7 +24,12 @@ const MatchInfo = ({ type }) => {
       </LoadingWrap>
     );
 
-  return <div></div>;
+  return (
+    <>
+      <MatchSummary {...{ matchData }} />
+      <MatchList />
+    </>
+  );
 };
 
 export default MatchInfo;
