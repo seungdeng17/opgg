@@ -89,7 +89,9 @@ const RecentWinRate = ({ recentWinRate }) => {
     return (
       <RecentWinRateItem key={id}>
         <ChampImg src={imageUrl} alt="champ-img" />
-        <div className="champ-name">{name}</div>
+        <div className="champ-name" title={name}>
+          {name}
+        </div>
         <div className="win-rate">{winRate}%</div>
         <RatioWrap>
           <RatioText>
