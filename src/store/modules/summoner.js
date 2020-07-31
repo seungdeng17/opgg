@@ -26,6 +26,7 @@ const summoner = (state = initialState, action) => {
             return {
                 ...state,
                 summonerData: action.payload.summoner,
+                error: null,
             }
         case GET_DATA_ERROR: {
             return {
