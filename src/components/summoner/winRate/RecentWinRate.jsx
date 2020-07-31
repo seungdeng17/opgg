@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import styled from "styled-components";
+import { calculateRate } from "@utils/util";
 
 const RecentWinRateItem = styled.li`
   padding: 8px 8px 8px 15px;
@@ -85,7 +86,8 @@ const RecentWinRate = ({ recentWinRate }) => {
     if (champList.includes(id)) return null;
     champList.push(id);
 
-    const winRate = Math.round((wins / (wins + losses)) * 100);
+    const games = wins + losses;
+    const { winRate } = calculateRate({ ...data, games });
 
     return (
       <RecentWinRateItem key={id}>

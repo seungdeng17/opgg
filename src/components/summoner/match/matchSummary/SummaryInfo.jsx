@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { getKdaScoreColor } from "@utils/util";
+import { calculateRate, getKdaScoreColor } from "@utils/util";
 
 import DoughnutGraph from "./DoughnutGraph";
 
@@ -51,6 +51,7 @@ const KdaInfo = styled.div`
   color: #999;
   margin-bottom: 6px;
   height: 13px;
+
   .deaths {
     color: #c6443e;
   }
@@ -63,6 +64,7 @@ const KdaInfo = styled.div`
 const KdaScore = styled.div`
   font-size: 16px;
   color: ${({ color }) => (color ? color : "#5e5e5e")};
+
   .kda {
     font-weight: 600;
   }
@@ -78,8 +80,7 @@ const SummaryInfo = ({ summary }) => {
   const { wins, losses, kills, deaths, assists } = summary;
 
   const games = wins + losses;
-  const winRate = Math.round((wins / games) * 100);
-  const kdaScore = ((kills + assists) / deaths).toFixed(2);
+  const { winRate, kdaScore } = calculateRate({ ...summary, games });
   const kdaColor = getKdaScoreColor(+kdaScore);
 
   return (
@@ -89,7 +90,7 @@ const SummaryInfo = ({ summary }) => {
         <GraphWrap>
           <DoughnutGraph {...{ wins, losses }} />
           <div className="win-rate">
-            <span>{winRate}</span>%
+            <span>{winRate}%</span>
           </div>
         </GraphWrap>
       </WinLossRatioWrap>
@@ -98,7 +99,7 @@ const SummaryInfo = ({ summary }) => {
           <span>{kills}</span> / <span className="deaths">{deaths}</span> / <span>{assists}</span>
         </KdaInfo>
         <KdaScore color={kdaColor}>
-          <span className="kda">{kdaScore}</span>:1
+          <span className="kda">{kdaScore}:1</span>
           <span className="win-rate">({winRate}%)</span>
         </KdaScore>
       </KdaWrap>
