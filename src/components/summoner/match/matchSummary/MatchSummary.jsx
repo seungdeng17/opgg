@@ -13,6 +13,7 @@ const MatchSummaryWrap = styled.div`
   border-top: none;
   margin-bottom: 16px;
   display: flex;
+  box-sizing: border-box;
 `;
 
 const MatchSummary = ({ matchData }) => {
