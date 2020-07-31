@@ -19,7 +19,8 @@ const RecentWinRateItem = styled.li`
     margin-right: 2px;
   }
   .win-rate {
-    margin-right: 12px;
+    width: 34px;
+    margin-right: 6px;
   }
 
   :last-child {
