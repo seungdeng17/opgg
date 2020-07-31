@@ -11,7 +11,6 @@ export const getMatchData = summonerName => async dispatch => {
         const data = await response.json();
         dispatch({ type: GET_DATA_SUCCESS, payload: data });
     } catch (error) {
-        console.log(error);
         dispatch({ type: GET_DATA_ERROR, payload: error });
     }
 }
