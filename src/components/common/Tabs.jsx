@@ -6,7 +6,7 @@ const Tabs = ({ children, TabButtonWrap, TabButton }) => {
     const handleClick = () => setSelected(i);
     return (
       <TabButton key={i} selected={i === selected} onClick={handleClick}>
-        {c.props.title}
+        <span>{c.props.title}</span>
       </TabButton>
     );
   });

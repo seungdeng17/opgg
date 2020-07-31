@@ -12,13 +12,12 @@ const WinRateWrap = styled.div`
   border: 1px solid #cdd2d2;
 `;
 
-const TabButtonWrap = styled.div`
+const TabButtonWrap = styled.ul`
   display: flex;
 `;
 
-const TabButton = styled.div`
+const TabButton = styled.li`
   width: 150px;
-  background-color: white;
   padding: 15px;
   background-color: ${({ selected }) => (selected ? "#ededed" : "#f2f2f2")};
   border-bottom: 1px solid ${({ selected }) => (selected ? "#ededed" : "#cdd2d2")};
