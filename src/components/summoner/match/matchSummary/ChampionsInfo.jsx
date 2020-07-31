@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { calculateRate, getKdaScoreColor, getWinRateColor } from "@utils/util";
 
+import EmptyChampionInfo from "./EmptyChampionInfo";
+
 const ChampionsInfoWrap = styled.ul`
   width: 228px;
   padding: 16px 0;
@@ -59,6 +61,8 @@ const KdaScore = styled.span`
 `;
 
 const ChampionsInfo = ({ champions }) => {
+  let needChampionsListLength = 3;
+
   const champList = [];
   const championsList = champions.map((data) => {
     const { wins, losses, id, name, imageUrl } = data;
@@ -68,6 +72,7 @@ const ChampionsInfo = ({ champions }) => {
     const { kdaScore, winRate } = calculateRate(data);
     const kdaColor = getKdaScoreColor(+kdaScore);
     const winRateColor = getWinRateColor(+winRate);
+    needChampionsListLength--;
 
     return (
       <ChampionsInfoItem key={id}>
@@ -84,7 +89,9 @@ const ChampionsInfo = ({ champions }) => {
     );
   });
 
-  console.log(championsList);
+  for (let i = 0; i < needChampionsListLength; i++) {
+    championsList.push(<EmptyChampionInfo key={i} />);
+  }
 
   return <ChampionsInfoWrap>{championsList}</ChampionsInfoWrap>;
 };
