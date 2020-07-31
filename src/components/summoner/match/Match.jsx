@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { getMatchData } from "@modules/match";
+import { getMatchData, changeFilterType, filterType } from "@modules/match";
 import Tabs from "@components/common/Tabs";
 
 import MatchFilter from "./MatchFilter";
@@ -14,7 +14,6 @@ const TabButtonWrap = styled.ul`
   border: 1px solid #cdd2d2;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  padding: 0 10px;
 `;
 
 const TabButton = styled.li`
@@ -37,15 +36,19 @@ const TabButton = styled.li`
 const Match = ({ summonerData }) => {
   const dispatch = useDispatch();
 
+  const onClickCallback = (type) => dispatch(changeFilterType(type));
+
+  const { all, soloRank, teamRank } = filterType;
+
   useEffect(() => {
     dispatch(getMatchData(summonerData.name));
   }, [summonerData]);
 
   return (
     <Tabs {...{ TabButtonWrap, TabButton }}>
-      <MatchFilter title="전체" />
-      <MatchFilter title="솔로랭크" />
-      <MatchFilter title="자유랭크" />
+      <MatchFilter title="전체" callback={() => onClickCallback(all)} type={all} />
+      <MatchFilter title="솔로랭크" callback={() => onClickCallback(soloRank)} type={soloRank} />
+      <MatchFilter title="자유랭크" callback={() => onClickCallback(teamRank)} type={teamRank} />
     </Tabs>
   );
 };
