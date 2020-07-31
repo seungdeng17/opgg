@@ -6,8 +6,8 @@ import EmptyChampionInfo from "./EmptyChampionInfo";
 
 const ChampionsInfoWrap = styled.ul`
   width: 228px;
-  padding: 16px 0;
-  padding-left: 16px;
+  padding: 16px;
+  padding-right: 0;
   border-right: 1px solid #cdd2d2;
   box-sizing: border-box;
   display: flex;

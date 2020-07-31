@@ -27,7 +27,7 @@ const TabButton = styled.li`
   box-sizing: border-box;
 
   span {
-    line-height: 36px;
+    line-height: 32px;
     border-bottom: 2px solid ${({ selected }) => (selected ? "#1f8ecd" : "transparent")};
     color: ${({ selected }) => (selected ? "#1f8ecd" : "#555")};
     font-size: 12px;
