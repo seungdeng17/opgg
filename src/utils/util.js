@@ -40,3 +40,20 @@ export const getWinRateColor = (winRate) => {
     if (winRate >= 60) return '#c6443e';
     return null;
 }
+
+export const translatePositionName = (position) => {
+    switch (position) {
+        case 'TOP':
+            return '탑';
+        case 'JNG':
+            return '정글';
+        case 'MID':
+            return '미드';
+        case 'ADC':
+            return '원딜';
+        case 'SUP':
+            return '서폿';
+        default:
+            break;
+    }
+}
