@@ -7,27 +7,28 @@ import Header from "@components/header/Header";
 import Profile from "@components/summoner/profile/Profile";
 import Rank from "@components/summoner/rank/Rank";
 import WinRate from "@components/summoner/winRate/WinRate";
+import Match from "@components/summoner/match/Match";
 
 const MainWrap = styled.div`
   width: 1440px;
   margin: 0 auto;
 `;
 
-const MainContentsOutter = styled.div`
+const ContentsOutter = styled.div`
   background-color: #eaeaea;
 `;
 
-const MainContentsInner = styled.div`
+const ContentsInner = styled.div`
   padding: 10px 0 40px 179px;
   display: flex;
 `;
 
-const MainLeftContents = styled.div`
+const LeftContents = styled.div`
   width: 300px;
   margin-right: 10px;
 `;
 
-const MainRightContents = styled.div`
+const RightContents = styled.div`
   width: 690px;
 `;
 
@@ -38,15 +39,17 @@ const Main = () => {
     summonerData && !error ? (
       <>
         <Profile {...{ summonerData }} />
-        <MainContentsOutter>
-          <MainContentsInner>
-            <MainLeftContents>
+        <ContentsOutter>
+          <ContentsInner>
+            <LeftContents>
               <Rank {...{ summonerData }} />
               <WinRate {...{ summonerData }} />
-            </MainLeftContents>
-            <MainRightContents></MainRightContents>
-          </MainContentsInner>
-        </MainContentsOutter>
+            </LeftContents>
+            <RightContents>
+              <Match {...{ summonerData }} />
+            </RightContents>
+          </ContentsInner>
+        </ContentsOutter>
       </>
     ) : (
       <NoResult />

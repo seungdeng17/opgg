@@ -1,31 +1,31 @@
 import { API } from '@constants/url';
 import { checkResponseData } from '@utils/util';
 
-const GET_DATA_SUCCESS = 'summoner/GET_DATA_SUCCESS';
-const GET_DATA_ERROR = 'summoner/GET_DATA_ERROR';
+const GET_DATA_SUCCESS = 'match/GET_DATA_SUCCESS';
+const GET_DATA_ERROR = 'match/GET_DATA_ERROR';
 
-export const getSummonerData = summonerName => async dispatch => {
+export const getMatchData = summonerName => async dispatch => {
     try {
-        const response = await fetch(API.GET_SUMMONER(summonerName));
+        const response = await fetch(API.GET_MATCH(summonerName));
         if (!checkResponseData(response)) throw (new Error(response.status));
         const data = await response.json();
         dispatch({ type: GET_DATA_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: GET_DATA_ERROR, payload: error });
     }
-};
+}
 
 const initialState = {
-    summonerData: null,
+    matchData: null,
     error: null,
-};
+}
 
-const summoner = (state = initialState, action) => {
+const match = (state = initialState, action) => {
     switch (action.type) {
         case GET_DATA_SUCCESS:
             return {
                 ...state,
-                summonerData: action.payload.summoner,
+                matchData: action.payload,
                 error: null,
             }
         case GET_DATA_ERROR: {
@@ -37,6 +37,6 @@ const summoner = (state = initialState, action) => {
         default:
             return state;
     }
-};
+}
 
-export default summoner;
+export default match;
