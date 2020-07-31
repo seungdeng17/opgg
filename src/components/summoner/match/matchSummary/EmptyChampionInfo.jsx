@@ -17,7 +17,7 @@ const ChampImg = styled.img`
 const InfoText = styled.p`
   line-height: 34px;
   font-size: 11px;
-  color: #999999;
+  color: #999;
 `;
 
 const EmptyChampionInfo = () => {
