@@ -48,6 +48,7 @@ const InfoText = styled.div`
 `;
 
 const KdaScore = styled.span`
+  font-weight: 600;
   color: ${({ color }) => (color ? color : "#555")};
 
   ::before {
