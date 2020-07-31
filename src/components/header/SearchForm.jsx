@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { getSummoner } from "@modules/summoner";
+import { getSummonerData } from "@modules/summoner";
 
 const SearchFormWrap = styled.div`
   position: absolute;
@@ -54,7 +54,7 @@ const SearchForm = () => {
 
   const onSubmit = ({ summonerName }) => {
     if (!summonerName) return;
-    dispatch(getSummoner(summonerName));
+    dispatch(getSummonerData(summonerName));
   };
 
   return (

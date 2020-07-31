@@ -4,7 +4,7 @@ import { checkResponseData } from '@utils/util';
 const GET_DATA_SUCCESS = 'summoner/GET_DATA_SUCCESS';
 const GET_DATA_ERROR = 'summoner/GET_DATA_ERROR';
 
-export const getSummoner = summonerName => async dispatch => {
+export const getSummonerData = summonerName => async dispatch => {
     try {
         const response = await fetch(API.GET_SUMMONER(summonerName));
         if (!checkResponseData(response)) throw (new Error(response.status));
