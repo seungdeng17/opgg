@@ -56,7 +56,10 @@ export const translatePositionName = (position) => {
 };
 
 export const getGameResult = (gameLength, isWin) => {
-    const resultClassName = gameLength <= 300 ? "re-game" : isWin ? "win-game" : "loss-game";
+    // 'isWin' 값이 true(승리)인 데이터가 '다시하기' 기준(gameLength -> 300 이하)에 들어가는 데이터 밖에 없어 해당 로직은 임시적으로 사용하지 않음
+    // const resultClassName = gameLength <= 300 ? 're-game' : isWin ? 'win-game' : 'loss-game';
+
+    const resultClassName = isWin ? 'win-game' : 'loss-game';
     switch (resultClassName) {
         case 'win-game':
             return { resultClassName, resultText: '승리' };
