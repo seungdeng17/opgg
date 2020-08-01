@@ -55,7 +55,7 @@ const KdaInfo = styled.div`
   .deaths {
     color: #c6443e;
   }
-  span {
+  b {
     color: #333;
     margin: 0 3px;
   }
@@ -96,7 +96,7 @@ const SummaryInfo = ({ summary }) => {
       </WinLossRatioWrap>
       <KdaWrap>
         <KdaInfo>
-          <span>{kills}</span> / <span className="deaths">{deaths}</span> / <span>{assists}</span>
+          <b>{kills}</b> / <b className="deaths">{deaths}</b> / <b>{assists}</b>
         </KdaInfo>
         <KdaScore color={kdaColor}>
           <span className="kda">{kdaScore}:1</span>
