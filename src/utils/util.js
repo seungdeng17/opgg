@@ -66,3 +66,9 @@ export const getGameResult = (gameLength, isWin) => {
             break;
     }
 };
+
+export const getDuration = (duration) => {
+    const minute = Math.floor(duration / 60);
+    const seconds = duration - (minute * 60);
+    return `${minute}분 ${seconds}초`
+}
