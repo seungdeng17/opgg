@@ -5,7 +5,7 @@ import { getMatchData } from "@modules/match";
 import { FILTER_TYPE } from "@constants/constant";
 import Tabs from "@components/common/Tabs";
 
-import MatchInfo from "./MatchInfo";
+import MatchFilter from "./MatchFilter";
 
 const TabButtonWrap = styled.ul`
   width: 690px;
@@ -49,9 +49,9 @@ const Match = ({ summonerData }) => {
 
   return (
     <Tabs {...{ TabButtonWrap, TabButton }}>
-      <MatchInfo title="전체" callback={() => tabClickCallback(ALL)} {...{ filterType }} />
-      <MatchInfo title="솔로랭크" callback={() => tabClickCallback(SOLO_RANK)} {...{ filterType }} />
-      <MatchInfo title="자유랭크" callback={() => tabClickCallback(TEAM_RANK)} {...{ filterType }} />
+      <MatchFilter title="전체" callback={() => tabClickCallback(ALL)} {...{ filterType }} />
+      <MatchFilter title="솔로랭크" callback={() => tabClickCallback(SOLO_RANK)} {...{ filterType }} />
+      <MatchFilter title="자유랭크" callback={() => tabClickCallback(TEAM_RANK)} {...{ filterType }} />
     </Tabs>
   );
 };

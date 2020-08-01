@@ -14,7 +14,7 @@ const LoadingWrap = styled.div`
   align-items: center;
 `;
 
-const MatchInfo = ({ filterType }) => {
+const MatchFilter = ({ filterType }) => {
   const { matchData, error } = useSelector(({ match }) => match);
 
   if (!matchData || error)
@@ -34,4 +34,4 @@ const MatchInfo = ({ filterType }) => {
   );
 };
 
-export default MatchInfo;
+export default MatchFilter;
