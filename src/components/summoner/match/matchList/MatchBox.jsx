@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getGameResult } from "@utils/util";
 
 import GameStats from "./GameStats";
+import GameSettingInfo from "./GameSettingInfo";
 
 const MatchBoxWrap = styled.li`
   width: 690px;
@@ -36,6 +37,7 @@ const MatchBox = ({ match }) => {
   return (
     <MatchBoxWrap className={resultClassName}>
       <GameStats {...{ gameType, createDate, gameLength, resultClassName, resultText }} />
+      <GameSettingInfo {...{ champion, spells, peak }} />
     </MatchBoxWrap>
   );
 };
