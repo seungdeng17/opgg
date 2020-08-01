@@ -24,10 +24,12 @@ const MatchInfo = ({ filterType }) => {
       </LoadingWrap>
     );
 
+  const { summary, champions, positions, games } = matchData;
+
   return (
     <>
-      <MatchSummary {...{ matchData }} />
-      <MatchList />
+      <MatchSummary {...{ summary, champions, positions }} />
+      <MatchList {...{ games, filterType }} />
     </>
   );
 };
