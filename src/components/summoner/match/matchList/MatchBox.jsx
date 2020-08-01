@@ -8,6 +8,7 @@ import KDAInfo from "./KDAInfo";
 import StatsInfo from "./StatsInfo";
 import ItemsInfo from "./ItemsInfo";
 import PlayerNames from "./PlayerNames";
+import MoreInfoButton from "./MoreInfoButton";
 
 const MatchBoxWrap = styled.li`
   position: relative;
@@ -33,28 +34,6 @@ const MatchBoxWrap = styled.li`
   }
 `;
 
-const MoreInfoBox = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 96px;
-  top: -1px;
-  right: -1px;
-  box-sizing: border-box;
-  border: 1px solid;
-  &.win-game {
-    background-color: #7fb0e1;
-    border-color: #549dc7;
-  }
-  &.lose-game {
-    background-color: #e89c95;
-    border-color: #c8817c;
-  }
-  &.re-game {
-    background-color: #a7a7a7;
-    border-color: #999;
-  }
-`;
-
 const MatchBox = ({ match }) => {
   const { champion, spells, items, gameId, createDate, gameLength, gameType, stats, peak, isWin } = match;
 
@@ -68,7 +47,7 @@ const MatchBox = ({ match }) => {
       <StatsInfo {...{ champion, stats }} />
       <ItemsInfo ward={stats.ward} {...{ items, resultClassName }} />
       <PlayerNames {...{ gameId }} />
-      <MoreInfoBox className={resultClassName} />
+      <MoreInfoButton {...{ resultClassName }} />
     </MatchBoxWrap>
   );
 };
