@@ -13,7 +13,6 @@ const GameStatsWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   color: #555;
-
   .game-type {
     font-weight: 600;
   }

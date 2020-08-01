@@ -9,7 +9,6 @@ const GameSettingInfoWrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   .image-wrap {
     display: flex;
   }
@@ -39,7 +38,6 @@ const PeakImg = styled.img`
   height: 22px;
   border-radius: 50%;
   margin-bottom: 1px;
-
   &.main-peak {
     background-color: #000;
   }
