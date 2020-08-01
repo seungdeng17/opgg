@@ -21,7 +21,7 @@ const TeamWrap = styled.div`
   justify-content: center;
 `;
 
-const Summoner = styled.div`
+const PlayerInfoWrap = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 2px;
@@ -46,10 +46,10 @@ const Summoner = styled.div`
 
 const MakeTeamList = (player) => {
   return (
-    <Summoner key={player.summonerId}>
+    <PlayerInfoWrap key={player.summonerId}>
       <img src={player.champion.imageUrl} alt="champion-img" />
       <p>{player.summonerName}</p>
-    </Summoner>
+    </PlayerInfoWrap>
   );
 };
 
