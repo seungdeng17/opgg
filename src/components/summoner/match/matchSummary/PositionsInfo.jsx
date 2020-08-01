@@ -83,15 +83,9 @@ const RateInfoText = styled.div`
 `;
 
 const PositionsInfo = ({ positions }) => {
+  const positionIcons = { TOP, JNG, MID, ADC, SUP };
   const positionsSort = positions.sort((a, b) => b.games - a.games);
   const totalGames = positions.reduce((acc, cur) => acc + cur.games, 0);
-  const positionIcons = {
-    TOP,
-    JNG,
-    MID,
-    ADC,
-    SUP,
-  };
 
   const positionList = [];
   const positionsInfoList = positionsSort.map((data) => {
