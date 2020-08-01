@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { GAME_RESULT } from "@constants/constant";
 
 import buildIconBlue from "@assets/images/buildIconBlue.png";
 import buildIconRed from "@assets/images/buildIconRed.png";
@@ -30,7 +31,7 @@ const ItemsInfoWrap = styled.div`
       background-color: #7aa5c3;
     }
   }
-  &.loss-game {
+  &.lose-game {
     ${DummyItem} {
       background-color: #cb9e9a;
     }
@@ -77,16 +78,17 @@ const ItemsInfo = ({ ward, items, resultClassName }) => {
   const needDummyItemLength = needItemsLength - _items.length;
 
   const { visionWardsBought } = ward;
-  const wardIconSrc = resultClassName === "loss-game" ? wardIconRed : wardIconBlue;
-  const buildIconSrc = resultClassName === "loss-game" ? buildIconRed : buildIconBlue;
+  const { LOSE_GAME } = GAME_RESULT;
+  const wardIconSrc = resultClassName === LOSE_GAME ? wardIconRed : wardIconBlue;
+  const buildIconSrc = resultClassName === LOSE_GAME ? buildIconRed : buildIconBlue;
 
-  const itemsList = _items.map((item, idx) => <Item key={`${idx}-item`} src={item.imageUrl} alt="item-img" />);
+  const itemsList = _items.map((item, idx) => <Item key={idx} src={item.imageUrl} alt="item-img" />);
 
   for (let i = 0; i < needDummyItemLength; i++) {
-    itemsList.push(<DummyItem key={`${i}-dummy`} />);
+    itemsList.push(<DummyItem key={"dummy" + i} />);
   }
-  itemsList.push(<BuildIcon background={buildIconSrc} key="build-icon" />);
-  itemsList.splice(3, 0, <Item key="accessory-item" src={accessoryItem.imageUrl} alt="item-img" />);
+  itemsList.push(<BuildIcon background={buildIconSrc} key="b-icon" />);
+  itemsList.splice(3, 0, <Item key="ac-item" src={accessoryItem.imageUrl} alt="item-img" />);
 
   return (
     <ItemsInfoWrap className={resultClassName}>

@@ -21,7 +21,7 @@ const MatchBoxWrap = styled.li`
     background-color: #b0ceea;
     border-color: #a1b8cd;
   }
-  &.loss-game {
+  &.lose-game {
     background-color: #d6b5b2;
     border-color: #c0aba8;
   }

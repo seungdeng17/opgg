@@ -7,5 +7,5 @@ export const FILTER_TYPE = {
 export const GAME_RESULT = {
     RE_GAME: 're-game',
     WIN_GAME: 'win-game',
-    LOSS_GAME: 'loss-game',
+    LOSE_GAME: 'lose-game',
 }

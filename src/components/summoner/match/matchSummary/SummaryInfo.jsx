@@ -14,7 +14,7 @@ const SummaryInfoWrap = styled.div`
   box-sizing: border-box;
 `;
 
-const WinLossRatioWrap = styled.div`
+const WinLoseRatioWrap = styled.div`
   font-size: 12px;
   color: #666;
   text-align: center;
@@ -85,7 +85,7 @@ const SummaryInfo = ({ summary }) => {
 
   return (
     <SummaryInfoWrap>
-      <WinLossRatioWrap>
+      <WinLoseRatioWrap>
         {games}전 {wins}승 {losses}패
         <GraphWrap>
           <DoughnutGraph {...{ wins, losses }} />
@@ -93,7 +93,7 @@ const SummaryInfo = ({ summary }) => {
             <span>{winRate}%</span>
           </div>
         </GraphWrap>
-      </WinLossRatioWrap>
+      </WinLoseRatioWrap>
       <KdaWrap>
         <KdaInfo>
           <b>{kills}</b> / <b className="deaths">{deaths}</b> / <b>{assists}</b>

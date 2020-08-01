@@ -30,7 +30,7 @@ const GameStatsWrap = styled.div`
       border-color: #a1b8cd;
     }
   }
-  &.loss-game {
+  &.lose-game {
     .result-text {
       font-weight: 600;
       color: #d0021b;
