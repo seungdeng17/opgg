@@ -30,12 +30,15 @@ const SpellImg = styled.img`
   width: 22px;
   height: 22px;
   border-radius: 2px;
+  margin-right: 4px;
+  margin-bottom: 1px;
 `;
 
 const PeakImg = styled.img`
   width: 22px;
   height: 22px;
   border-radius: 50%;
+  margin-bottom: 1px;
 
   &.main-peak {
     background-color: #000;
