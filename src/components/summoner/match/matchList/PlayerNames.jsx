@@ -32,12 +32,14 @@ const PlayerInfoWrap = styled.div`
   }
   p {
     max-width: 60px;
+    height: 13px;
     font-size: 11px;
     color: #555;
     letter-spacing: -0.42px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    cursor: pointer;
   }
   :last-child {
     margin: 0;
