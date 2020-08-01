@@ -79,3 +79,13 @@ export const getChampName = (imageUrl) => {
     const champName = imageUrl.substr(54).replace(/.png/g, '');
     return championsData.data[champName].name;
 };
+
+export const getLargestKill = (largestMultiKillString) => {
+    switch (largestMultiKillString) {
+        case 'Penta Kill': return '펜타킬';
+        case 'Quadra Kill': return '쿼드라킬';
+        case 'Triple Kill': return '트리플킬';
+        case 'Double Kill': return '더블킬';
+        default: return null;
+    }
+}
