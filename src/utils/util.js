@@ -1,3 +1,4 @@
+import { GAME_RESULT } from '@constants/constant';
 import championsData from '@data/champions.json';
 
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
@@ -56,6 +57,8 @@ export const translatePositionName = (position) => {
 };
 
 export const getGameResult = (gameLength, isWin) => {
+    const { RE_GAME, WIN_GAME, LOSS_GAME } = GAME_RESULT;
+
     // 'isWin' 값이 true(승리)인 데이터가 '다시하기' 기준(gameLength -> 300 이하)에 들어가는 데이터 밖에 없어 해당 로직은 임시적으로 사용하지 않음
     // const resultClassName = gameLength <= 300 ? 're-game' : isWin ? 'win-game' : 'loss-game';
 

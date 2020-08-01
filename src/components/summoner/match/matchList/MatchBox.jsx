@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { getGameResult } from "@utils/util";
 
@@ -6,6 +6,7 @@ import GameStats from "./GameStats";
 import GameSettingInfo from "./GameSettingInfo";
 import KDAInfo from "./KDAInfo";
 import StatsInfo from "./StatsInfo";
+import ItemsInfo from "./ItemsInfo";
 
 const MatchBoxWrap = styled.li`
   width: 690px;
@@ -41,8 +42,9 @@ const MatchBox = ({ match }) => {
       <GameSettingInfo {...{ champion, spells, peak }} />
       <KDAInfo {...{ stats }} />
       <StatsInfo {...{ champion, stats }} />
+      <ItemsInfo ward={stats.ward} {...{ items, resultClassName }} />
     </MatchBoxWrap>
   );
 };
 
-export default MatchBox;
+export default memo(MatchBox);
