@@ -18,6 +18,7 @@ const RecentWinRateItem = styled.li`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-right: 2px;
+    cursor: default;
   }
   .win-rate {
     width: 34px;

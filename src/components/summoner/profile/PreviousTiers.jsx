@@ -18,7 +18,7 @@ const PreviousTier = styled.div`
   border: 1px solid #d0d3d4;
   border-radius: 2px;
 
-  span {
+  b {
     font-weight: 600;
   }
 
@@ -30,7 +30,7 @@ const PreviousTier = styled.div`
 const PreviousTiers = ({ previousTiers }) => {
   const previoutTiersList = previousTiers.reverse().map(({ season, shortString, tier }) => (
     <PreviousTier key={season} data-tier={shortString}>
-      <span>S{season}</span> {tier}
+      <b>S{season}</b> {tier}
     </PreviousTier>
   ));
 

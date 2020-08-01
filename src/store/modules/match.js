@@ -1,4 +1,5 @@
 import { API } from '@constants/url';
+import { MESSAGE } from '@constants/constant';
 import { checkResponseData } from '@utils/util';
 
 const GET_DATA_SUCCESS = 'match/GET_DATA_SUCCESS';
@@ -12,6 +13,7 @@ export const getMatchData = summonerName => async dispatch => {
         dispatch({ type: GET_DATA_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: GET_DATA_ERROR, payload: error });
+        alert(MESSAGE.GET_DATA_ERROR);
     }
 }
 

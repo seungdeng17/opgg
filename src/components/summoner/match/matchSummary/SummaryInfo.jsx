@@ -14,7 +14,7 @@ const SummaryInfoWrap = styled.div`
   box-sizing: border-box;
 `;
 
-const WinLossRatioWrap = styled.div`
+const WinLoseRatioWrap = styled.div`
   font-size: 12px;
   color: #666;
   text-align: center;
@@ -55,7 +55,7 @@ const KdaInfo = styled.div`
   .deaths {
     color: #c6443e;
   }
-  span {
+  b {
     color: #333;
     margin: 0 3px;
   }
@@ -85,7 +85,7 @@ const SummaryInfo = ({ summary }) => {
 
   return (
     <SummaryInfoWrap>
-      <WinLossRatioWrap>
+      <WinLoseRatioWrap>
         {games}전 {wins}승 {losses}패
         <GraphWrap>
           <DoughnutGraph {...{ wins, losses }} />
@@ -93,10 +93,10 @@ const SummaryInfo = ({ summary }) => {
             <span>{winRate}%</span>
           </div>
         </GraphWrap>
-      </WinLossRatioWrap>
+      </WinLoseRatioWrap>
       <KdaWrap>
         <KdaInfo>
-          <span>{kills}</span> / <span className="deaths">{deaths}</span> / <span>{assists}</span>
+          <b>{kills}</b> / <b className="deaths">{deaths}</b> / <b>{assists}</b>
         </KdaInfo>
         <KdaScore color={kdaColor}>
           <span className="kda">{kdaScore}:1</span>

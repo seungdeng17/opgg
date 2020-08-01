@@ -14,7 +14,7 @@ const LoadingWrap = styled.div`
   align-items: center;
 `;
 
-const MatchInfo = ({ type }) => {
+const MatchFilter = ({ filterType }) => {
   const { matchData, error } = useSelector(({ match }) => match);
 
   if (!matchData || error)
@@ -24,12 +24,14 @@ const MatchInfo = ({ type }) => {
       </LoadingWrap>
     );
 
+  const { summary, champions, positions, games } = matchData;
+
   return (
     <>
-      <MatchSummary {...{ matchData }} />
-      <MatchList />
+      <MatchSummary {...{ summary, champions, positions }} />
+      <MatchList {...{ games, filterType }} />
     </>
   );
 };
 
-export default MatchInfo;
+export default MatchFilter;

@@ -18,9 +18,7 @@ const MatchSummaryWrap = styled.div`
   box-sizing: border-box;
 `;
 
-const MatchSummary = ({ matchData }) => {
-  const { summary, champions, positions } = matchData;
-
+const MatchSummary = ({ summary, champions, positions }) => {
   return (
     <MatchSummaryWrap>
       <SummaryInfo {...{ summary }} />
