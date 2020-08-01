@@ -10,7 +10,7 @@ const KDAInfoWrap = styled.div`
   justify-content: center;
   align-items: center;
   .badge {
-    margin-top: 10px;
+    margin-top: 7px;
   }
 `;
 
