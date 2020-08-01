@@ -49,9 +49,9 @@ const Match = ({ summonerData }) => {
 
   return (
     <Tabs {...{ TabButtonWrap, TabButton }}>
-      <MatchInfo title="전체" callback={() => tabClickCallback(ALL)} type={ALL} />
-      <MatchInfo title="솔로랭크" callback={() => tabClickCallback(SOLO_RANK)} type={SOLO_RANK} />
-      <MatchInfo title="자유랭크" callback={() => tabClickCallback(TEAM_RANK)} type={TEAM_RANK} />
+      <MatchInfo title="전체" callback={() => tabClickCallback(ALL)} {...{ filterType }} />
+      <MatchInfo title="솔로랭크" callback={() => tabClickCallback(SOLO_RANK)} {...{ filterType }} />
+      <MatchInfo title="자유랭크" callback={() => tabClickCallback(TEAM_RANK)} {...{ filterType }} />
     </Tabs>
   );
 };
