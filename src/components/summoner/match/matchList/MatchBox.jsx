@@ -4,6 +4,7 @@ import { getGameResult } from "@utils/util";
 
 import GameStats from "./GameStats";
 import GameSettingInfo from "./GameSettingInfo";
+import KDAInfo from "./KDAInfo";
 
 const MatchBoxWrap = styled.li`
   width: 690px;
@@ -14,7 +15,6 @@ const MatchBoxWrap = styled.li`
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-
   &.win-game {
     background-color: #b0ceea;
     border-color: #a1b8cd;
@@ -30,7 +30,7 @@ const MatchBoxWrap = styled.li`
 `;
 
 const MatchBox = ({ match }) => {
-  const { champion, spells, items, gameId, createDate, gameLength, gameType, summonerName, stats, peak, isWin } = match;
+  const { champion, spells, items, gameId, createDate, gameLength, gameType, stats, peak, isWin } = match;
 
   const { resultClassName, resultText } = getGameResult(gameLength, isWin);
 
@@ -38,6 +38,7 @@ const MatchBox = ({ match }) => {
     <MatchBoxWrap className={resultClassName}>
       <GameStats {...{ gameType, createDate, gameLength, resultClassName, resultText }} />
       <GameSettingInfo {...{ champion, spells, peak }} />
+      <KDAInfo {...{ stats }} />
     </MatchBoxWrap>
   );
 };
