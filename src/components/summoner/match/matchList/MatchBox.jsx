@@ -5,6 +5,7 @@ import { getGameResult } from "@utils/util";
 import GameStats from "./GameStats";
 import GameSettingInfo from "./GameSettingInfo";
 import KDAInfo from "./KDAInfo";
+import StatsInfo from "./StatsInfo";
 
 const MatchBoxWrap = styled.li`
   width: 690px;
@@ -39,6 +40,7 @@ const MatchBox = ({ match }) => {
       <GameStats {...{ gameType, createDate, gameLength, resultClassName, resultText }} />
       <GameSettingInfo {...{ champion, spells, peak }} />
       <KDAInfo {...{ stats }} />
+      <StatsInfo {...{ champion, stats }} />
     </MatchBoxWrap>
   );
 };
