@@ -15,7 +15,7 @@ const DoughnutGraph = ({ wins, losses }) => {
   };
 
   const options = {
-    cutoutPercentage: 70,
+    cutoutPercentage: 71,
     maintainAspectRatio: false,
     legend: {
       display: false,
