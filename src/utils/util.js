@@ -1,3 +1,5 @@
+import championsData from '@data/champions.json';
+
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
 
 export const getNumberComma = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -72,3 +74,8 @@ export const getDuration = (duration) => {
     const seconds = duration - (minute * 60);
     return `${minute}분 ${seconds}초`
 }
+
+export const getChampName = (imageUrl) => {
+    const champName = imageUrl.substr(54).replace(/.png/g, '');
+    return championsData.data[champName].name;
+};
