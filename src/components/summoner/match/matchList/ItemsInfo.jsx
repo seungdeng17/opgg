@@ -7,13 +7,13 @@ import buildIconRed from "@assets/images/buildIconRed.png";
 import wardIconBlue from "@assets/images/wardIconBlue.png";
 import wardIconRed from "@assets/images/wardIconRed.png";
 
+import Item from "./Item";
+
 const DummyItem = styled.span`
   display: inline-block;
   width: 22px;
   height: 22px;
   border-radius: 2px;
-  margin-right: 2px;
-  margin-bottom: 1px;
 `;
 
 const ItemsInfoWrap = styled.div`
@@ -25,6 +25,9 @@ const ItemsInfoWrap = styled.div`
   align-items: center;
   .itemsList-wrap {
     width: 96px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1px;
   }
   &.win-game {
     ${DummyItem} {
@@ -41,14 +44,6 @@ const ItemsInfoWrap = styled.div`
       background-color: #979797;
     }
   }
-`;
-
-const Item = styled.img`
-  width: 22px;
-  height: 22px;
-  border-radius: 2px;
-  margin-right: 2px;
-  margin-bottom: 1px;
 `;
 
 const VisionWardInfo = styled.div`

@@ -1,4 +1,5 @@
 import { GAME_RESULT } from '@constants/constant';
+import { ITEM_JSON } from '@constants/url';
 import championsData from '@data/champions.json';
 
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
@@ -82,8 +83,17 @@ export const getDuration = (duration) => {
 }
 
 export const getChampName = (imageUrl) => {
-    const champName = imageUrl.substr(54).replace(/.png/g, '');
+    const needlessLength = 54;
+    const champName = imageUrl.substr(needlessLength).replace('.png', '');
     return championsData.data[champName].name;
+};
+
+export const getItemDescription = async (imageUrl) => {
+    const needlessLength = 50;
+    const itemCode = imageUrl.substr(needlessLength).replace('.png', '');
+    const response = await fetch(ITEM_JSON);
+    const json = await response.json();
+    return json.data[itemCode].description;
 };
 
 export const getLargestKill = (largestMultiKillString) => {
