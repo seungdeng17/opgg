@@ -10,6 +10,8 @@ const MoreInfoButtonWrap = styled.div`
   right: -1px;
   box-sizing: border-box;
   border: 1px solid;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
   &.win-game {
     background-color: #7fb0e1;
     border-color: #549dc7;
