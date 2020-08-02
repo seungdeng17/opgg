@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { getItemDescription } from "@utils/util";
 
@@ -25,12 +25,12 @@ const Item = ({ src, alt }) => {
     setDescription(data);
   };
 
-  const handleMouseLeave = useCallback(() => setHover(false), []);
+  const handleMouseLeave = () => setHover(false);
 
   return (
     <>
       <ItemWrap>
-        <ItemImg onMouseLeave={handleMouseLeave} onMouseMove={handleMouseEnter} src={src} alt={alt} />
+        <ItemImg onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseEnter} src={src} alt={alt} />
         {bHover && <ToolTip text={description} />}
       </ItemWrap>
     </>
