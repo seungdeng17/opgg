@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ToolTipWrap = styled.div`
   position: absolute;
-  bottom: 100%;
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -14,8 +14,8 @@ const ToolTipWrap = styled.div`
     width: 12px;
     height: 12px;
     background-color: #222727;
-    position: relative;
-    top: -5px;
+    position: absolute;
+    bottom: -8px;
     left: 50%;
     transform: rotate(45deg) translateX(-50%);
     z-index: -1;
@@ -24,6 +24,7 @@ const ToolTipWrap = styled.div`
 
 const ToolTipText = styled.p`
   display: inline-block;
+  min-width: 30px;
   padding: 10px;
   background-color: #222727;
   font-size: 11px;
@@ -35,13 +36,13 @@ const ToolTipText = styled.p`
   }
 `;
 
-const ToolTip = ({ text, callback }) => {
+const ToolTip = ({ text }) => {
   const createMarkup = () => {
     return { __html: text };
   };
 
   return (
-    <ToolTipWrap onMouseOver={callback}>
+    <ToolTipWrap>
       <ToolTipText dangerouslySetInnerHTML={createMarkup()} />
     </ToolTipWrap>
   );

@@ -19,9 +19,10 @@ const Item = ({ src, alt }) => {
   const [description, setDescription] = useState(null);
 
   const handleMouseEnter = async () => {
+    setHover(true);
+    if (description) return;
     const data = await getItemDescription(src);
     setDescription(data);
-    setHover(true);
   };
 
   const handleMouseLeave = useCallback(() => setHover(false), []);
@@ -29,8 +30,8 @@ const Item = ({ src, alt }) => {
   return (
     <>
       <ItemWrap>
-        <ItemImg onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseEnter} src={src} alt={alt} />
-        {bHover && <ToolTip text={description} callback={handleMouseLeave} />}
+        <ItemImg onMouseLeave={handleMouseLeave} onMouseMove={handleMouseEnter} src={src} alt={alt} />
+        {bHover && <ToolTip text={description} />}
       </ItemWrap>
     </>
   );
