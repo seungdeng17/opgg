@@ -36,7 +36,6 @@ const MatchBoxWrap = styled.li`
 
 const MatchBox = ({ match }) => {
   const { champion, spells, items, gameId, createDate, gameLength, gameType, stats, peak, isWin } = match;
-
   const { resultClassName, resultText } = getGameResult(gameLength, isWin);
 
   return (
@@ -52,4 +51,6 @@ const MatchBox = ({ match }) => {
   );
 };
 
-export default memo(MatchBox);
+const checkMatchBoxProps = (prevProps, nextProps) => prevProps.match.gameId === nextProps.match.gameId;
+
+export default memo(MatchBox, checkMatchBoxProps);

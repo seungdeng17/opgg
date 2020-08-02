@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useFetch from "@hooks/useFetch";
 import styled from "styled-components";
 import { API } from "@constants/url";
 import Loading from "@components/common/Loading";
+import { getSummonerData } from "@modules/summoner";
 
 const PlayerNamesWrap = styled.div`
   width: 170px;
@@ -46,16 +47,8 @@ const PlayerInfoWrap = styled.div`
   }
 `;
 
-const MakeTeamList = (player) => {
-  return (
-    <PlayerInfoWrap key={player.summonerId}>
-      <img src={player.champion.imageUrl} alt="champion-img" />
-      <p>{player.summonerName}</p>
-    </PlayerInfoWrap>
-  );
-};
-
 const PlayerNames = ({ gameId }) => {
+  const dispatch = useDispatch();
   const { summonerData } = useSelector(({ summoner }) => summoner);
   const [gamePlayersInfo, setGamePlayersInfo] = useState(null);
 
@@ -68,9 +61,21 @@ const PlayerNames = ({ gameId }) => {
       </PlayerNamesWrap>
     );
 
+  const handleClickPlayerName = ({ target }) => dispatch(getSummonerData(target.dataset.name));
+  const makeTeamList = (player) => {
+    return (
+      <PlayerInfoWrap key={player.summonerId}>
+        <img src={player.champion.imageUrl} alt="champion-img" />
+        <p data-name={player.summonerName} onClick={handleClickPlayerName}>
+          {player.summonerName}
+        </p>
+      </PlayerInfoWrap>
+    );
+  };
+
   const [teamA, teamB] = gamePlayersInfo.teams;
-  const teamAList = teamA.players.map(MakeTeamList);
-  const teamBList = teamB.players.map(MakeTeamList);
+  const teamAList = teamA.players.map(makeTeamList);
+  const teamBList = teamB.players.map(makeTeamList);
 
   return (
     <PlayerNamesWrap>
