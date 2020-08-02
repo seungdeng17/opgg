@@ -60,7 +60,7 @@ const SearchForm = () => {
   return (
     <SearchFormWrap>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput type="text" placeholder="소환사명,챔피언..." name="summonerName" ref={register} />
+        <FormInput type="text" placeholder="소환사명,챔피언..." name="summonerName" ref={register} autoComplete="off" />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
     </SearchFormWrap>
