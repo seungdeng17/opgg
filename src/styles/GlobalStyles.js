@@ -4,6 +4,10 @@ import { reset } from 'styled-reset';
 const GlobalStyles = createGlobalStyle`
   ${reset}
 
+  html {
+      /* scroll-behavior: smooth; */
+  }
+
   body {
     font-family: 'Noto Sans KR', sans-serif;
     position: relative;
