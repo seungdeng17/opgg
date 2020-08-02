@@ -7,4 +7,4 @@ export const API = {
     GET_MOST_INFO: (summonerName) => `${baseURL}/api/summoner/${summonerName}/mostInfo`,
 }
 
-export const itemInfoJSON = 'http://ddragon.leagueoflegends.com/cdn/10.15.1/data/ko_KR/item.json';
+export const ITEM_JSON = 'http://ddragon.leagueoflegends.com/cdn/10.15.1/data/ko_KR/item.json';
