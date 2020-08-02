@@ -46,7 +46,7 @@ const PlayerInfoWrap = styled.div`
   }
 `;
 
-const MakeTeamList = (player) => {
+const makeTeamList = (player) => {
   return (
     <PlayerInfoWrap key={player.summonerId}>
       <img src={player.champion.imageUrl} alt="champion-img" />
@@ -69,8 +69,8 @@ const PlayerNames = ({ gameId }) => {
     );
 
   const [teamA, teamB] = gamePlayersInfo.teams;
-  const teamAList = teamA.players.map(MakeTeamList);
-  const teamBList = teamB.players.map(MakeTeamList);
+  const teamAList = teamA.players.map(makeTeamList);
+  const teamBList = teamB.players.map(makeTeamList);
 
   return (
     <PlayerNamesWrap>
