@@ -25,19 +25,28 @@ const ChampImg = styled.img`
   margin-right: 6px;
 `;
 
+const IconWrap = styled.div`
+  display: flex;
+  .spell,
+  .peak {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
 const SpellImg = styled.img`
   width: 22px;
   height: 22px;
   border-radius: 2px;
   margin-right: 4px;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 `;
 
 const PeakImg = styled.img`
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   &.main-peak {
     background-color: #000;
   }
@@ -50,14 +59,16 @@ const GameSettingInfo = ({ champion, spells, peak }) => {
     <GameSettingInfoWrap>
       <div className="image-wrap">
         <ChampImg src={champion.imageUrl} alt="champ-img" />
-        <div>
-          <SpellImg src={spells[0].imageUrl} alt="spell-img" />
-          <SpellImg src={spells[1].imageUrl} alt="spell-img" />
-        </div>
-        <div>
-          <PeakImg src={peak[0]} alt="peak-img" className="main-peak" />
-          <PeakImg src={peak[1]} alt="peak-img" />
-        </div>
+        <IconWrap>
+          <div className="spell">
+            <SpellImg src={spells[0].imageUrl} alt="spell-img" />
+            <SpellImg src={spells[1].imageUrl} alt="spell-img" />
+          </div>
+          <div className="peak">
+            <PeakImg src={peak[0]} alt="peak-img" className="main-peak" />
+            <PeakImg src={peak[1]} alt="peak-img" />
+          </div>
+        </IconWrap>
       </div>
       <span className="champ-name">{champName}</span>
     </GameSettingInfoWrap>
