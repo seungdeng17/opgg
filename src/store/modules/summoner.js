@@ -1,18 +1,11 @@
 import { API } from '@constants/url';
-import { checkResponseData } from '@utils/util';
+import { get } from '@utils/request';
 
 const GET_DATA_SUCCESS = 'summoner/GET_DATA_SUCCESS';
 const GET_DATA_ERROR = 'summoner/GET_DATA_ERROR';
 
 export const getSummonerData = summonerName => async dispatch => {
-    try {
-        const response = await fetch(API.GET_SUMMONER(summonerName));
-        if (!checkResponseData(response)) throw (new Error(response.status));
-        const data = await response.json();
-        dispatch({ type: GET_DATA_SUCCESS, payload: data });
-    } catch (error) {
-        dispatch({ type: GET_DATA_ERROR, payload: error });
-    }
+    get(API.GET_SUMMONER(summonerName), dispatch, GET_DATA_SUCCESS, GET_DATA_ERROR);
 };
 
 const initialState = {
