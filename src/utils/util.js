@@ -78,12 +78,10 @@ export const getChampName = (imageUrl, data) => {
     return data[champName].name;
 };
 
-export const getItemDescription = async (imageUrl, data) => {
+export const getItemDescription = (imageUrl, data) => {
     const needlessLength = 50;
     const itemCode = imageUrl.substr(needlessLength).replace('.png', '');
-    const response = await fetch(ITEM_JSON);
-    const json = await response.json();
-    return json.data[itemCode].description;
+    return { name: data[itemCode].name, description: data[itemCode].description };
 };
 
 export const getLargestKill = (largestMultiKillString) => {

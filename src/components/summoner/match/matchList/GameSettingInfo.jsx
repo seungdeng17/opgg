@@ -56,7 +56,6 @@ const PeakImg = styled.img`
 const GameSettingInfo = ({ champion, spells, peak }) => {
   const { championsData } = useSelector(({ gameDescription }) => gameDescription);
 
-  if (!championsData) return null;
   const champName = getChampName(champion.imageUrl, championsData);
 
   return (

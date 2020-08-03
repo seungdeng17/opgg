@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { getMatchData } from "@modules/match";
-import { getChampionsData, getItemsData } from "@modules/gameDescription";
 import { FILTER_TYPE } from "@constants/constant";
 import Tabs from "@components/common/Tabs";
 
@@ -40,15 +39,12 @@ const Match = ({ summonerData }) => {
   const { ALL, SOLO_RANK, TEAM_RANK } = FILTER_TYPE;
 
   const dispatch = useDispatch();
-  const { championsData, itemsData } = useSelector(({ gameDescription }) => gameDescription);
   const [filterType, setFilterType] = useState(ALL);
 
   const tabClickCallback = (type) => setFilterType(type);
 
   useEffect(() => {
     dispatch(getMatchData(summonerData.name));
-    if (!championsData) dispatch(getChampionsData());
-    if (!itemsData) dispatch(getItemsData());
   }, [summonerData]);
 
   return (

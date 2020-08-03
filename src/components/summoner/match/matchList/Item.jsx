@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getItemDescription } from "@utils/util";
 
@@ -16,22 +17,19 @@ const ItemImg = styled.img`
 
 const Item = ({ src, alt }) => {
   const [bHover, setHover] = useState(false);
-  const [description, setDescription] = useState(null);
 
-  const handleMouseEnter = async () => {
-    setHover(true);
-    if (description) return;
-    const data = await getItemDescription(src);
-    setDescription(data);
-  };
+  const { itemsData } = useSelector(({ gameDescription }) => gameDescription);
+  const { name, description } = getItemDescription(src, itemsData);
+  const tooltipText = `<div style="color:#1abc9c;">${name}</div>${description}`;
 
+  const handleMouseEnter = () => setHover(true);
   const handleMouseLeave = () => setHover(false);
 
   return (
     <>
       <ItemWrap>
         <ItemImg onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseEnter} src={src} alt={alt} />
-        {bHover && <ToolTip text={description} />}
+        {bHover && <ToolTip text={tooltipText} />}
       </ItemWrap>
     </>
   );
