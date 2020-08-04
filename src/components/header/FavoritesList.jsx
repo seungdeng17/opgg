@@ -47,7 +47,7 @@ const NameText = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 12px;
+  font-size: 13px;
   color: #666;
   line-height: 18px;
   cursor: pointer;
