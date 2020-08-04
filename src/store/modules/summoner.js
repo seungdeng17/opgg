@@ -19,7 +19,9 @@ export const getSummonerData = summonerName => async dispatch => {
 
     const data = { name, profileImageUrl, tierInfo, lp };
     const _searchHistory = searchHistory.filter(data => data.name !== name);
+    const historyMaxSize = 10;
     _searchHistory.unshift(data);
+    if (_searchHistory.length > historyMaxSize) _searchHistory.splice(historyMaxSize);
     localStorage.setItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY, JSON.stringify(_searchHistory));
 };
 
