@@ -7,8 +7,10 @@ export const get = async (url, dispatch, successActionType, errorActionType) => 
         if (!checkResponseData(response)) throw (new Error(response.status));
         const data = await response.json();
         dispatch({ type: successActionType, payload: data });
+        return true;
     } catch (error) {
         dispatch({ type: errorActionType, payload: error });
         alert(MESSAGE.GET_DATA_ERROR);
+        return false;
     }
 }
