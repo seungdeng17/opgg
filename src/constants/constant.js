@@ -13,3 +13,7 @@ export const GAME_RESULT = {
     WIN_GAME: 'win-game',
     LOSE_GAME: 'lose-game',
 }
+
+export const LOCAL_STORAGE_KEY = {
+    SEARCH_HISTORY: 'SEARCH_HISTORY',
+}
