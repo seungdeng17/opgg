@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { LOCAL_STORAGE_KEY } from "@constants/constant";
+import { useDispatch } from "react-redux";
+import { getSummonerData } from "@modules/summoner";
 
 const AutoCompleteItemWrap = styled.li`
   width: 100%;
@@ -48,8 +50,16 @@ const TierInfo = styled.p`
   color: #666;
 `;
 
-const SearchAutoComplete = ({ value }) => {
+const SearchAutoComplete = ({ value, setFocus, setValue }) => {
+  const dispatch = useDispatch();
   const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+
+  const handleClickPlayerName = (name) => {
+    setFocus(false);
+    setValue("");
+    window.scrollTo(0, 0);
+    dispatch(getSummonerData(name));
+  };
 
   const autoCompleteList = data
     .filter((data) => data.name.startsWith(value))
@@ -57,7 +67,7 @@ const SearchAutoComplete = ({ value }) => {
       const endStr = data.name.slice(value.length);
 
       return (
-        <AutoCompleteItemWrap key={data.name}>
+        <AutoCompleteItemWrap key={data.name} onClick={() => handleClickPlayerName(data.name)}>
           <ProfileImg src={data.profileImageUrl} alt="profile-img" />
           <div className="info-text">
             <div className="summoner-name">

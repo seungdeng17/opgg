@@ -81,7 +81,7 @@ const SearchForm = () => {
         />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
-      {bFocus && <SearchFormModal {...{ value, bFocus, setFocus, inputEl }} />}
+      {bFocus && <SearchFormModal {...{ value, bFocus, setFocus, setValue, inputEl }} />}
     </SearchFormWrap>
   );
 };
