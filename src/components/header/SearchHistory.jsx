@@ -27,7 +27,7 @@ const SearchHistory = ({ setFocus }) => {
   return (
     <Tabs {...{ TabButtonWrap, TabButton }}>
       <HistoryList title="최근검색" {...{ setFocus }} />
-      <FavoritesList title="즐겨찾기" />
+      <FavoritesList title="즐겨찾기" {...{ setFocus }} />
     </Tabs>
   );
 };

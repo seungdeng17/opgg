@@ -6,6 +6,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { RiInformationLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { getSummonerData } from "@modules/summoner";
+import { deleteHistoryData, addFavoritesData, checkFavorites, deleteFavoritesData } from "@utils/util";
 
 const NoHistory = styled.div`
   font-size: 13px;
@@ -28,10 +29,13 @@ const HistoryItemWrap = styled.li`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  :hover {
+    background-color: #1ea1f710;
+  }
 `;
 
 const NameText = styled.span`
-  width: 160px;
+  max-width: 160px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -69,22 +73,36 @@ const HistoryList = ({ setFocus }) => {
     );
 
   const handleClickPlayerName = ({ target }) => {
-    window.scrollTo(0, 0);
     setFocus(false);
+    window.scrollTo(0, 0);
     dispatch(getSummonerData(target.dataset.name));
   };
 
-  const historyList = searchHistory.map((data) => (
-    <HistoryItemWrap key={data.name}>
-      <NameText onClick={handleClickPlayerName} data-name={data.name}>
-        {data.name}
-      </NameText>
-      <Icons>
-        <TiStar className="star" />
-        <RiCloseLine className="delete" />
-      </Icons>
-    </HistoryItemWrap>
-  ));
+  const handleDelete = (summonerName) => {
+    setFocus(false);
+    deleteHistoryData(summonerName);
+  };
+
+  const handleAddFavorites = (summonerName) => {
+    setFocus(false);
+    if (checkFavorites(summonerName)) return deleteFavoritesData(summonerName);
+    addFavoritesData(summonerName);
+  };
+
+  const historyList = searchHistory.map((data) => {
+    const starColor = checkFavorites(data.name) ? "#3498db" : "#bdc3c7";
+    return (
+      <HistoryItemWrap key={data.name}>
+        <NameText onClick={handleClickPlayerName} data-name={data.name}>
+          {data.name}
+        </NameText>
+        <Icons color={starColor}>
+          <TiStar className="star" onClick={() => handleAddFavorites(data.name)} />
+          <RiCloseLine className="delete" onClick={() => handleDelete(data.name)} />
+        </Icons>
+      </HistoryItemWrap>
+    );
+  });
 
   return <ul>{historyList}</ul>;
 };

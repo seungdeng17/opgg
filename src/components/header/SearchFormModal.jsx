@@ -17,11 +17,7 @@ const SearchFormModalWrap = styled.div`
 
 const SearchFormModal = ({ value, bFocus, setFocus, inputEl }) => {
   const modalEl = useRef();
-  const modalContent = value ? (
-    <SearchAutoComplete {...{ value }} />
-  ) : (
-    <SearchHistory {...{ setFocus }} />
-  );
+  const modalContent = value ? <SearchAutoComplete {...{ value }} /> : <SearchHistory {...{ setFocus }} />;
 
   const handleClickOutside = ({ target }) => {
     if (bFocus && !modalEl.current.contains(target) && target !== inputEl.current) setFocus(false);

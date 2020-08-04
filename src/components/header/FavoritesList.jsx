@@ -6,6 +6,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { RiInformationLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { getSummonerData } from "@modules/summoner";
+import { deleteFavoritesData } from "@utils/util";
 
 const NoFavorites = styled.div`
   font-size: 13px;
@@ -30,7 +31,39 @@ const NoFavorites = styled.div`
   }
 `;
 
-const FavoritesList = () => {
+const FavoritesItemWrap = styled.li`
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  :hover {
+    background-color: #1ea1f710;
+  }
+`;
+
+const NameText = styled.span`
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: #666;
+  line-height: 18px;
+  cursor: pointer;
+`;
+
+const Icons = styled.span`
+  line-height: 18px;
+  vertical-align: middle;
+  .delete {
+    cursor: pointer;
+    font-size: 18px;
+    color: #bdc3c7;
+  }
+`;
+
+const FavoritesList = ({ setFocus }) => {
   const dispatch = useDispatch();
   const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
 
@@ -45,7 +78,31 @@ const FavoritesList = () => {
       </NoFavorites>
     );
 
-  return <div>gdgd</div>;
+  const handleClickPlayerName = ({ target }) => {
+    setFocus(false);
+    window.scrollTo(0, 0);
+    dispatch(getSummonerData(target.dataset.name));
+  };
+
+  const handleDelete = (summonerName) => {
+    setFocus(false);
+    deleteFavoritesData(summonerName);
+  };
+
+  const favoritesList = favorites.map((name) => {
+    return (
+      <FavoritesItemWrap key={name}>
+        <NameText onClick={handleClickPlayerName} data-name={name}>
+          {name}
+        </NameText>
+        <Icons>
+          <RiCloseLine className="delete" onClick={() => handleDelete(name)} />
+        </Icons>
+      </FavoritesItemWrap>
+    );
+  });
+
+  return <ul>{favoritesList}</ul>;
 };
 
 export default FavoritesList;

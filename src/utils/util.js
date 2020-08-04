@@ -1,6 +1,4 @@
-import { GAME_RESULT } from '@constants/constant';
-import { ITEM_JSON } from '@constants/url';
-import championsData from '@data/champions.json';
+import { GAME_RESULT, LOCAL_STORAGE_KEY } from '@constants/constant';
 
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
 
@@ -92,4 +90,35 @@ export const getLargestKill = (largestMultiKillString) => {
         case 'Double Kill': return '더블킬';
         default: return null;
     }
+}
+
+export const deleteHistoryData = (summonerName) => {
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+    let _data = data.filter(data => data.name !== summonerName);
+    if (!_data.length) _data = null;
+    localStorage.setItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY, JSON.stringify(_data));
+}
+
+export const checkFavorites = (summonerName) => {
+    const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    if (!favorites) return false;
+
+    return favorites.some(name => name === summonerName);
+}
+
+export const addFavoritesData = (summonerName) => {
+    let favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    if (!favorites) favorites = [];
+
+    const favoritesMaxSize = 10;
+    favorites.push(summonerName);
+    if (favorites.length > favoritesMaxSize) favorites.splice(favoritesMaxSize);
+    localStorage.setItem(LOCAL_STORAGE_KEY.FAVORITES, JSON.stringify(favorites));
+}
+
+export const deleteFavoritesData = (summonerName) => {
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    let _data = data.filter(name => name !== summonerName);
+    if (!_data.length) _data = null;
+    localStorage.setItem(LOCAL_STORAGE_KEY.FAVORITES, JSON.stringify(_data));
 }
