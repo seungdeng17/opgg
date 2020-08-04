@@ -77,6 +77,7 @@ const SearchForm = () => {
           value={value}
           onChange={handleChange}
           onClick={handelClick}
+          onFocus={handelClick}
         />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
