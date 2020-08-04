@@ -1,10 +1,35 @@
 import React from "react";
-import { LOCAL_STORAGE_KEY } from "@constants/constant";
+import styled from "styled-components";
 
-const SearchHistory = () => {
-  const searchHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+import Tabs from "@components/common/Tabs";
+import HistoryList from "./HistoryList";
+import FavoritesList from "./FavoritesList";
 
-  return <div>SearchHistory</div>;
+const TabButtonWrap = styled.ul`
+  display: flex;
+`;
+
+const TabButton = styled.li`
+  width: 50%;
+  padding: 15px;
+  background-color: ${({ selected }) => (selected ? "#fff" : "#f2f2f2")};
+  color: ${({ selected }) => (selected ? "#5e5e5e" : "#879292")};
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+
+  :last-child {
+    border-right: none;
+  }
+`;
+
+const SearchHistory = ({ setFocus }) => {
+  return (
+    <Tabs {...{ TabButtonWrap, TabButton }}>
+      <HistoryList title="최근검색" {...{ setFocus }} />
+      <FavoritesList title="즐겨찾기" />
+    </Tabs>
+  );
 };
 
 export default SearchHistory;
