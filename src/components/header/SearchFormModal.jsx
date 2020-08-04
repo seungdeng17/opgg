@@ -9,7 +9,6 @@ const SearchFormModalWrap = styled.div`
   top: 36px;
   left: 0;
   width: 100%;
-  min-height: 127px;
   border-radius: 2px;
   z-index: 10;
   background-color: #fff;

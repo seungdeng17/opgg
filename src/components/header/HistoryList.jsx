@@ -3,8 +3,24 @@ import styled from "styled-components";
 import { LOCAL_STORAGE_KEY } from "@constants/constant";
 import { TiStar } from "react-icons/ti";
 import { RiCloseLine } from "react-icons/ri";
+import { RiInformationLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { getSummonerData } from "@modules/summoner";
+
+const NoHistory = styled.div`
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #666;
+  text-align: center;
+  padding: 15px 20px;
+  .icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #bdc3c7;
+  }
+`;
 
 const HistoryItemWrap = styled.li`
   width: 100%;
@@ -43,6 +59,14 @@ const Icons = styled.span`
 const HistoryList = ({ setFocus }) => {
   const dispatch = useDispatch();
   const searchHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+
+  if (!searchHistory)
+    return (
+      <NoHistory>
+        <RiInformationLine className="icon" />
+        <p>최근에 본 소환사가 없습니다.</p>
+      </NoHistory>
+    );
 
   const handleClickPlayerName = ({ target }) => {
     window.scrollTo(0, 0);

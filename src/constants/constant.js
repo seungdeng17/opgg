@@ -16,4 +16,5 @@ export const GAME_RESULT = {
 
 export const LOCAL_STORAGE_KEY = {
     SEARCH_HISTORY: 'SEARCH_HISTORY',
+    FAVORITES: 'FAVORITES',
 }
