@@ -61,7 +61,10 @@ const PlayerNames = ({ gameId }) => {
       </PlayerNamesWrap>
     );
 
-  const handleClickPlayerName = ({ target }) => dispatch(getSummonerData(target.dataset.name));
+  const handleClickPlayerName = ({ target }) => {
+    window.scrollTo(0, 0);
+    dispatch(getSummonerData(target.dataset.name));
+  };
   const makeTeamList = (player) => {
     return (
       <PlayerInfoWrap key={player.summonerId}>

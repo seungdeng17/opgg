@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getChampionsData, getItemsData } from "@modules/gameDescription";
 
 import NoResult from "@components/etc/NoResult";
 import Header from "@components/header/Header";
@@ -33,7 +34,14 @@ const RightContents = styled.div`
 `;
 
 const Main = () => {
+  const dispatch = useDispatch();
   const { summonerData, error } = useSelector(({ summoner }) => summoner);
+  const { championsData, itemsData } = useSelector(({ gameDescription }) => gameDescription);
+
+  useEffect(() => {
+    if (!championsData) dispatch(getChampionsData());
+    if (!itemsData) dispatch(getItemsData());
+  }, [dispatch]);
 
   const mainContents =
     summonerData && !error ? (

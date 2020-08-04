@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getChampName } from "@utils/util";
 
@@ -53,7 +54,9 @@ const PeakImg = styled.img`
 `;
 
 const GameSettingInfo = ({ champion, spells, peak }) => {
-  const champName = getChampName(champion.imageUrl);
+  const { championsData } = useSelector(({ gameDescription }) => gameDescription);
+
+  const champName = getChampName(champion.imageUrl, championsData);
 
   return (
     <GameSettingInfoWrap>

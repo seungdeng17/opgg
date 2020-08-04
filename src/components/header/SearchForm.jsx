@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { getSummonerData } from "@modules/summoner";
+
+import SearchFormModal from "./SearchFormModal";
 
 const SearchFormWrap = styled.div`
   position: absolute;
@@ -50,19 +51,36 @@ const FormSubmitBtn = styled.button`
 
 const SearchForm = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const [bFocus, setFocus] = useState(false);
+  const [value, setValue] = useState("");
+  const inputEl = useRef();
 
-  const onSubmit = ({ summonerName }) => {
-    if (!summonerName) return;
-    dispatch(getSummonerData(summonerName));
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!value) return;
+    dispatch(getSummonerData(value));
+    setValue("");
+    setFocus(false);
   };
+  const handleChange = ({ target }) => setValue(target.value);
+  const handelClick = () => setFocus(true);
 
   return (
     <SearchFormWrap>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput type="text" placeholder="소환사명,챔피언..." name="summonerName" ref={register} autoComplete="off" />
+      <Form onSubmit={handleSubmit}>
+        <FormInput
+          type="text"
+          placeholder="소환사명,챔피언..."
+          name="summonerName"
+          autoComplete="off"
+          ref={inputEl}
+          value={value}
+          onChange={handleChange}
+          onClick={handelClick}
+        />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
+      {bFocus && <SearchFormModal {...{ value, bFocus, setFocus, inputEl }} />}
     </SearchFormWrap>
   );
 };

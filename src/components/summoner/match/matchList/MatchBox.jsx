@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import { getGameResult } from "@utils/util";
 
@@ -37,15 +38,18 @@ const MatchBoxWrap = styled.li`
 const MatchBox = ({ match }) => {
   const { champion, spells, items, gameId, createDate, gameLength, gameType, stats, peak, isWin } = match;
   const { resultClassName, resultText } = getGameResult(gameLength, isWin);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
 
   return (
-    <MatchBoxWrap className={resultClassName}>
+    <MatchBoxWrap className={resultClassName} ref={ref}>
       <GameStats {...{ gameType, createDate, gameLength, resultClassName, resultText }} />
       <GameSettingInfo {...{ champion, spells, peak }} />
       <KDAInfo {...{ stats }} />
       <StatsInfo {...{ champion, stats }} />
       <ItemsInfo ward={stats.ward} {...{ items, resultClassName }} />
-      <PlayerNames {...{ gameId }} />
+      {inView && <PlayerNames {...{ gameId }} />}
       <MoreInfoButton {...{ resultClassName }} />
     </MatchBoxWrap>
   );

@@ -1,6 +1,4 @@
-import { GAME_RESULT } from '@constants/constant';
-import { ITEM_JSON } from '@constants/url';
-import championsData from '@data/champions.json';
+import { GAME_RESULT, LOCAL_STORAGE_KEY } from '@constants/constant';
 
 export const checkResponseData = response => response.ok && (response.status >= 200 && response.status <= 207);
 
@@ -42,18 +40,12 @@ export const getWinRateColor = (winRate) => {
 
 export const translatePositionName = (position) => {
     switch (position) {
-        case 'TOP':
-            return '탑';
-        case 'JNG':
-            return '정글';
-        case 'MID':
-            return '미드';
-        case 'ADC':
-            return '원딜';
-        case 'SUP':
-            return '서폿';
-        default:
-            break;
+        case 'TOP': return '탑';
+        case 'JNG': return '정글';
+        case 'MID': return '미드';
+        case 'ADC': return '원딜';
+        case 'SUP': return '서폿';
+        default: break;
     }
 };
 
@@ -65,14 +57,10 @@ export const getGameResult = (gameLength, isWin) => {
 
     const resultClassName = isWin ? WIN_GAME : LOSE_GAME;
     switch (resultClassName) {
-        case WIN_GAME:
-            return { resultClassName, resultText: '승리' };
-        case LOSE_GAME:
-            return { resultClassName, resultText: '패배' };
-        case RE_GAME:
-            return { resultClassName, resultText: '다시하기' };
-        default:
-            break;
+        case WIN_GAME: return { resultClassName, resultText: '승리' };
+        case LOSE_GAME: return { resultClassName, resultText: '패배' };
+        case RE_GAME: return { resultClassName, resultText: '다시하기' };
+        default: break;
     }
 };
 
@@ -82,18 +70,16 @@ export const getDuration = (duration) => {
     return `${minute}분 ${seconds}초`
 }
 
-export const getChampName = (imageUrl) => {
+export const getChampName = (imageUrl, data) => {
     const needlessLength = 54;
     const champName = imageUrl.substr(needlessLength).replace('.png', '');
-    return championsData.data[champName].name;
+    return data[champName].name;
 };
 
-export const getItemDescription = async (imageUrl) => {
+export const getItemDescription = (imageUrl, data) => {
     const needlessLength = 50;
     const itemCode = imageUrl.substr(needlessLength).replace('.png', '');
-    const response = await fetch(ITEM_JSON);
-    const json = await response.json();
-    return json.data[itemCode].description;
+    return { name: data[itemCode].name, description: data[itemCode].description };
 };
 
 export const getLargestKill = (largestMultiKillString) => {
@@ -104,4 +90,35 @@ export const getLargestKill = (largestMultiKillString) => {
         case 'Double Kill': return '더블킬';
         default: return null;
     }
+}
+
+export const deleteHistoryData = (summonerName) => {
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+    let _data = data.filter(data => data.name !== summonerName);
+    if (!_data.length) _data = null;
+    localStorage.setItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY, JSON.stringify(_data));
+}
+
+export const checkFavorites = (summonerName) => {
+    const favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    if (!favorites) return false;
+
+    return favorites.some(name => name === summonerName);
+}
+
+export const addFavoritesData = (summonerName) => {
+    let favorites = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    if (!favorites) favorites = [];
+
+    const favoritesMaxSize = 10;
+    favorites.push(summonerName);
+    if (favorites.length > favoritesMaxSize) favorites.splice(favoritesMaxSize);
+    localStorage.setItem(LOCAL_STORAGE_KEY.FAVORITES, JSON.stringify(favorites));
+}
+
+export const deleteFavoritesData = (summonerName) => {
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.FAVORITES));
+    let _data = data.filter(name => name !== summonerName);
+    if (!_data.length) _data = null;
+    localStorage.setItem(LOCAL_STORAGE_KEY.FAVORITES, JSON.stringify(_data));
 }

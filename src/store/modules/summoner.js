@@ -1,18 +1,28 @@
 import { API } from '@constants/url';
-import { checkResponseData } from '@utils/util';
+import { LOCAL_STORAGE_KEY } from '@constants/constant';
+import { get } from '@utils/request';
+import { getTierName } from "@utils/util";
 
 const GET_DATA_SUCCESS = 'summoner/GET_DATA_SUCCESS';
 const GET_DATA_ERROR = 'summoner/GET_DATA_ERROR';
 
 export const getSummonerData = summonerName => async dispatch => {
-    try {
-        const response = await fetch(API.GET_SUMMONER(summonerName));
-        if (!checkResponseData(response)) throw (new Error(response.status));
-        const data = await response.json();
-        dispatch({ type: GET_DATA_SUCCESS, payload: data });
-    } catch (error) {
-        dispatch({ type: GET_DATA_ERROR, payload: error });
-    }
+    const { summoner } = await get(API.GET_SUMMONER(summonerName), dispatch, GET_DATA_SUCCESS, GET_DATA_ERROR);
+    if (!summoner) return;
+
+    const { name, profileImageUrl, leagues } = summoner;
+    const { tier, division, lp } = leagues[0].tierRank;
+    const tierInfo = getTierName(tier, division);
+
+    let searchHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+    if (!searchHistory) searchHistory = [];
+
+    const data = { name, profileImageUrl, tierInfo, lp };
+    const _searchHistory = searchHistory.filter(data => data.name !== name);
+    const historyMaxSize = 10;
+    _searchHistory.unshift(data);
+    if (_searchHistory.length > historyMaxSize) _searchHistory.splice(historyMaxSize);
+    localStorage.setItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY, JSON.stringify(_searchHistory));
 };
 
 const initialState = {
