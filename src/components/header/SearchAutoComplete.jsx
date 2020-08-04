@@ -53,6 +53,7 @@ const TierInfo = styled.p`
 const SearchAutoComplete = ({ value, setFocus, setValue }) => {
   const dispatch = useDispatch();
   const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.SEARCH_HISTORY));
+  if (!data) return null;
 
   const handleClickPlayerName = (name) => {
     setFocus(false);
