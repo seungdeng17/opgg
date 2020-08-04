@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 import SearchAutoComplete from "./SearchAutoComplete";
@@ -16,10 +16,22 @@ const SearchFormModalWrap = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 `;
 
-const SearchFormModal = ({ value }) => {
+const SearchFormModal = ({ value, bFocus, setFocus, inputEl }) => {
+  const modalEl = useRef();
   const modalContent = value ? <SearchAutoComplete {...{ value }} /> : <SearchHistory />;
 
-  return <SearchFormModalWrap>{modalContent}</SearchFormModalWrap>;
+  const handleClickOutside = ({ target }) => {
+    if (bFocus && !modalEl.current.contains(target) && target !== inputEl.current) setFocus(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  return <SearchFormModalWrap ref={modalEl}>{modalContent}</SearchFormModalWrap>;
 };
 
 export default SearchFormModal;
