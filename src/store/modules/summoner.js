@@ -4,8 +4,10 @@ import { get } from '@utils/request';
 const GET_DATA_SUCCESS = 'summoner/GET_DATA_SUCCESS';
 const GET_DATA_ERROR = 'summoner/GET_DATA_ERROR';
 
-export const getSummonerData = summonerName => async dispatch => {
-    get(API.GET_SUMMONER(summonerName), dispatch, GET_DATA_SUCCESS, GET_DATA_ERROR);
+export const getSummonerData = summonerName => dispatch => {
+    if (get(API.GET_SUMMONER(summonerName), dispatch, GET_DATA_SUCCESS, GET_DATA_ERROR)) {
+        console.log("gdgd");
+    };
 };
 
 const initialState = {

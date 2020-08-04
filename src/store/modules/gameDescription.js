@@ -5,11 +5,11 @@ const GET_CHAMPIONS_DATA_SUCCESS = 'gameDescription/GET_CHAMPIONS_DATA_SUCCESS';
 const GET_ITEMS_DATA_SUCCESS = 'gameDescription/GET_ITEMS_DATA_SUCCESS';
 const GET_DATA_ERROR = 'gameDescription/GET_DATA_ERROR';
 
-export const getChampionsData = () => async dispatch => {
+export const getChampionsData = () => dispatch => {
     get(CHAMPION_JSON, dispatch, GET_CHAMPIONS_DATA_SUCCESS, GET_DATA_ERROR);
 }
 
-export const getItemsData = () => async dispatch => {
+export const getItemsData = () => dispatch => {
     get(ITEM_JSON, dispatch, GET_ITEMS_DATA_SUCCESS, GET_DATA_ERROR);
 }
 

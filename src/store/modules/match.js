@@ -4,7 +4,7 @@ import { get } from '@utils/request';
 const GET_DATA_SUCCESS = 'match/GET_DATA_SUCCESS';
 const GET_DATA_ERROR = 'match/GET_DATA_ERROR';
 
-export const getMatchData = summonerName => async dispatch => {
+export const getMatchData = summonerName => dispatch => {
     get(API.GET_MATCH(summonerName), dispatch, GET_DATA_SUCCESS, GET_DATA_ERROR);
 }
 
