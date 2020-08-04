@@ -111,7 +111,7 @@ export const addFavoritesData = (summonerName) => {
     if (!favorites) favorites = [];
 
     const favoritesMaxSize = 10;
-    favorites.push(summonerName);
+    favorites.unshift(summonerName);
     if (favorites.length > favoritesMaxSize) favorites.splice(favoritesMaxSize);
     localStorage.setItem(LOCAL_STORAGE_KEY.FAVORITES, JSON.stringify(favorites));
 }
