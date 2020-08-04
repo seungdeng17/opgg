@@ -13,7 +13,7 @@ const TabButton = styled.li`
   width: 50%;
   padding: 15px;
   background-color: ${({ selected }) => (selected ? "#fff" : "#f2f2f2")};
-  color: ${({ selected }) => (selected ? "#5e5e5e" : "#879292")};
+  color: ${({ selected }) => (selected ? "#5e5e5e" : "#bdc3c7")};
   font-size: 14px;
   text-align: center;
   cursor: pointer;
