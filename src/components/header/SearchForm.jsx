@@ -77,10 +77,11 @@ const SearchForm = () => {
           value={value}
           onChange={handleChange}
           onClick={handelClick}
+          onFocus={handelClick}
         />
         <FormSubmitBtn type="submit">.GG</FormSubmitBtn>
       </Form>
-      {bFocus && <SearchFormModal {...{ value, bFocus, setFocus, inputEl }} />}
+      {bFocus && <SearchFormModal {...{ value, bFocus, setFocus, setValue, inputEl }} />}
     </SearchFormWrap>
   );
 };

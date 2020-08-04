@@ -15,18 +15,18 @@ const SearchFormModalWrap = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 `;
 
-const SearchFormModal = ({ value, bFocus, setFocus, inputEl }) => {
+const SearchFormModal = ({ value, bFocus, setFocus, setValue, inputEl }) => {
   const modalEl = useRef();
-  const modalContent = value ? <SearchAutoComplete {...{ value }} /> : <SearchHistory {...{ setFocus }} />;
+  const modalContent = value ? <SearchAutoComplete {...{ value, setFocus, setValue }} /> : <SearchHistory {...{ setFocus }} />;
 
   const handleClickOutside = ({ target }) => {
     if (bFocus && !modalEl.current.contains(target) && target !== inputEl.current) setFocus(false);
   };
 
   useEffect(() => {
-    window.addEventListener("click", handleClickOutside);
+    window.addEventListener("mousedown", handleClickOutside);
     return () => {
-      window.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
