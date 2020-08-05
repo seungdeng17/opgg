@@ -27,6 +27,7 @@ const NoFavorites = styled.div`
     vertical-align: middle;
   }
   p {
+    width: 100%;
     line-height: 18px;
   }
 `;
