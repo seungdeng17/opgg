@@ -132,14 +132,14 @@ components
 - **최근검색**
 <br>
 
-![image](https://user-images.githubusercontent.com/58316983/89303108-af2b7f00-d6a6-11ea-826c-5943c28014df.png)
+![image](https://user-images.githubusercontent.com/58316983/89524746-13be1980-d820-11ea-91be-3bbfb556565d.png)
 
 <br>
 
 - **즐겨찾기**
 <br>
 
-![image](https://user-images.githubusercontent.com/58316983/89302615-02510200-d6a6-11ea-89d4-5d3817c18382.png)
+![image](https://user-images.githubusercontent.com/58316983/89524804-29334380-d820-11ea-83f8-e0bc835a2e73.png)
 ![image](https://user-images.githubusercontent.com/58316983/89302761-35939100-d6a6-11ea-82b9-52bbfd9749fc.png)
 
 <br>
